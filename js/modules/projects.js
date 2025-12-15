@@ -13,8 +13,8 @@ function createProjectCard(project) {
   const tagsContainer = document.createElement("div");
   tagsContainer.className = "project-tags";
 
-  if (Array.isArray(project.tags)) {
-    project.tags.forEach(tag => {
+  if (Array.isArray(project.tech)) {
+    project.tech.forEach(tag => {
       const span = document.createElement("span");
       span.className = "project-tag";
       span.textContent = tag;
@@ -27,7 +27,9 @@ function createProjectCard(project) {
 }
 
 /**
- * @param {string} containerId 
+ * Renderiza projetos a partir do projects.json
+ *
+ * @param {string} containerId
  * @param {Object} options
  * @param {boolean} options.featuredOnly
  */
@@ -42,7 +44,13 @@ export async function renderProjects(
   container.classList.add("projects-grid");
 
   try {
-    const projects = await fetchJSON("data/projects.json");
+    const data = await fetchJSON("data/projects.json");
+
+    if (!data || !Array.isArray(data.projects)) {
+      throw new Error("Formato inválido de projects.json");
+    }
+
+    const projects = data.projects;
 
     const filteredProjects = projects.filter(
       project => !featuredOnly || project.featured === true
@@ -59,7 +67,7 @@ export async function renderProjects(
     });
 
   } catch (error) {
-    console.error(error);
+    console.error("Erro ao carregar projetos:", error);
     container.innerHTML =
       "<p>Erro ao carregar projetos. Tente novamente mais tarde.</p>";
   }

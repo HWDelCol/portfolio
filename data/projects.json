@@ -1,23 +1,24 @@
-[
-  {
-    "id": 1,
-    "title": "Automação de Onboarding RH",
-    "description": "Sistema que automatiza o processo de admissão de funcionários a partir de planilhas.",
-    "tags": ["Python", "Automação", "RH"],
-    "featured": true
-  },
-  {
-    "id": 2,
-    "title": "Dashboard Financeiro Pessoal",
-    "description": "Aplicação web para controle de gastos e visualização de dados financeiros.",
-    "tags": ["JavaScript", "Frontend", "Dados"],
-    "featured": true
-  },
-  {
-    "id": 3,
-    "title": "Bot de Monitoramento de Preços",
-    "description": "Script que monitora preços em e-commerces e envia alertas.",
-    "tags": ["Python", "Scraping"],
-    "featured": false
-  }
-]
+{
+  "projects": [
+    {
+      "id": "onboarding-automation",
+      "title": "Automação de Onboarding de Funcionários",
+      "description": "Sistema em Python que automatiza o processo de onboarding de novos funcionários a partir de um arquivo CSV, garantindo idempotência, geração de relatórios e simulação de envio de emails.",
+      "long_description": "Este projeto simula um fluxo real de onboarding usado por equipes de RH. O sistema identifica novos funcionários, evita reprocessamentos, registra estado, gera relatórios por execução e mantém separação clara de responsabilidades no código.",
+      "tech": ["Python", "CSV", "JSON", "Automação"],
+      "category": "Automação",
+      "features": [
+        "Leitura de dados via CSV",
+        "Identificação de novos funcionários",
+        "Controle de estado (idempotência)",
+        "Simulação de envio de emails",
+        "Geração de relatórios por execução"
+      ],
+      "repository": "https://github.com/HWDelCol/onboarding-automation",
+      "demo": null,
+      "status": "Concluído",
+      "featured": true,
+      "year": 2025
+    }
+  ]
+}
