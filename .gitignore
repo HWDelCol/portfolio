@@ -1,0 +1,13 @@
+# Sistema
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Build / minificação futura
+dist/
+build/
+
+# Logs
+*.log
