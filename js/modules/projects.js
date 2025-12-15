@@ -1,5 +1,3 @@
-// projects.js
-
 import { fetchJSON } from "../core/utils.js";
 
 function createProjectCard(project) {
@@ -15,29 +13,54 @@ function createProjectCard(project) {
   const tagsContainer = document.createElement("div");
   tagsContainer.className = "project-tags";
 
-  project.tags.forEach(tag => {
-    const span = document.createElement("span");
-    span.className = "project-tag";
-    span.textContent = tag;
-    tagsContainer.appendChild(span);
-  });
+  if (Array.isArray(project.tags)) {
+    project.tags.forEach(tag => {
+      const span = document.createElement("span");
+      span.className = "project-tag";
+      span.textContent = tag;
+      tagsContainer.appendChild(span);
+    });
+  }
 
   card.append(title, description, tagsContainer);
   return card;
 }
 
-export async function renderProjects(containerId, { featuredOnly = false } = {}) {
+/**
+ * @param {string} containerId 
+ * @param {Object} options
+ * @param {boolean} options.featuredOnly
+ */
+export async function renderProjects(
+  containerId,
+  { featuredOnly = false } = {}
+) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
   container.innerHTML = "";
   container.classList.add("projects-grid");
 
-  const projects = await fetchJSON("data/projects.json");
+  try {
+    const projects = await fetchJSON("data/projects.json");
 
-  projects
-    .filter(p => !featuredOnly || p.featured)
-    .forEach(project => {
-      container.appendChild(createProjectCard(project));
+    const filteredProjects = projects.filter(
+      project => !featuredOnly || project.featured === true
+    );
+
+    if (filteredProjects.length === 0) {
+      container.innerHTML = "<p>Nenhum projeto disponível no momento.</p>";
+      return;
+    }
+
+    filteredProjects.forEach(project => {
+      const card = createProjectCard(project);
+      container.appendChild(card);
     });
+
+  } catch (error) {
+    console.error(error);
+    container.innerHTML =
+      "<p>Erro ao carregar projetos. Tente novamente mais tarde.</p>";
+  }
 }
