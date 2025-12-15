@@ -1,0 +1,19 @@
+header{
+    background-color: var(--color-surface);
+    padding: var(--space-md) var(--space-lg);
+}
+
+header nav{
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+header nav a{
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+header nav a:hover{
+    color: var(--color-accent);
+}
