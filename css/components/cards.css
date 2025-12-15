@@ -11,6 +11,7 @@
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   transition: border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 
 .project-card:hover {
@@ -24,6 +25,12 @@
 
 .project-card p {
   font-size: 0.95rem;
+}
+
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .project-tags {

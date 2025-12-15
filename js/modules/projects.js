@@ -1,6 +1,10 @@
 import { fetchJSON } from "../core/utils.js";
 
 function createProjectCard(project) {
+  const link = document.createElement("a");
+  link.href = `project.html?id=${project.id}`;
+  link.className = "project-card-link";
+
   const card = document.createElement("article");
   card.className = "project-card";
 
@@ -22,7 +26,6 @@ function createProjectCard(project) {
     });
   }
 
-  // 🔗 Ações
   const actions = document.createElement("div");
   actions.className = "project-actions";
 
@@ -33,14 +36,16 @@ function createProjectCard(project) {
     githubLink.rel = "noopener noreferrer";
     githubLink.textContent = "GitHub";
     githubLink.className = "project-link";
+    githubLink.addEventListener("click", e => e.stopPropagation());
 
     actions.appendChild(githubLink);
   }
 
   card.append(title, description, tagsContainer, actions);
-  return card;
-}
+  link.appendChild(card);
 
+  return link;
+}
 
 /**
  * Renderiza projetos a partir do projects.json
