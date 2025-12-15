@@ -22,9 +22,25 @@ function createProjectCard(project) {
     });
   }
 
-  card.append(title, description, tagsContainer);
+  // 🔗 Ações
+  const actions = document.createElement("div");
+  actions.className = "project-actions";
+
+  if (project.repository) {
+    const githubLink = document.createElement("a");
+    githubLink.href = project.repository;
+    githubLink.target = "_blank";
+    githubLink.rel = "noopener noreferrer";
+    githubLink.textContent = "GitHub";
+    githubLink.className = "project-link";
+
+    actions.appendChild(githubLink);
+  }
+
+  card.append(title, description, tagsContainer, actions);
   return card;
 }
+
 
 /**
  * Renderiza projetos a partir do projects.json
