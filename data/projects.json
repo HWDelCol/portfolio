@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Automação de Onboarding RH",
+    "description": "Sistema que automatiza o processo de admissão de funcionários a partir de planilhas.",
+    "tags": ["Python", "Automação", "RH"],
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Dashboard Financeiro Pessoal",
+    "description": "Aplicação web para controle de gastos e visualização de dados financeiros.",
+    "tags": ["JavaScript", "Frontend", "Dados"],
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Bot de Monitoramento de Preços",
+    "description": "Script que monitora preços em e-commerces e envia alertas.",
+    "tags": ["Python", "Scraping"],
+    "featured": false
+  }
+]
